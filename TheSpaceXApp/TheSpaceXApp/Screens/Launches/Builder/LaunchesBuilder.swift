@@ -13,7 +13,16 @@ enum LaunchesBuilder {
     
     static func build(appCoordinator: AppCoordinator) -> LaunchesViewController {
         
-        let viewController = LaunchesViewController()
+        let httpClient = HttpClient(alamofireSession: Alamofire.Session.default)
+        
+        let viewModel = LaunchesViewModel(httpClient: httpClient, appCoordinator: appCoordinator)
+        
+        let delegate = LaunchesDelegate()
+        let dataSource = LaunchesDataSource()
+        
+        let viewController = LaunchesViewController(viewModel: viewModel,
+                                                    delegate: delegate,
+                                                    dataSource: dataSource)
         
         return viewController
     }

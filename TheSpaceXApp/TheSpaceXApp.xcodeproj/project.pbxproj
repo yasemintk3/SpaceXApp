@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		475A25E22C1ED57D002E87CB /* LaunchesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A25E12C1ED57D002E87CB /* LaunchesDelegate.swift */; };
+		475A25E42C1ED58B002E87CB /* LaunchesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A25E32C1ED58B002E87CB /* LaunchesDataSource.swift */; };
 		47E1FE912C1B4C630002571C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1FE902C1B4C630002571C /* AppDelegate.swift */; };
 		47E1FE932C1B4C630002571C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1FE922C1B4C630002571C /* SceneDelegate.swift */; };
 		47E1FE9A2C1B4C680002571C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47E1FE992C1B4C680002571C /* Assets.xcassets */; };
 		47E1FE9D2C1B4C680002571C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47E1FE9B2C1B4C680002571C /* LaunchScreen.storyboard */; };
 		47E1FEAE2C1C33930002571C /* Launches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1FEAD2C1C33930002571C /* Launches.swift */; };
 		47E1FEB12C1C36E70002571C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 47E1FEB02C1C36E70002571C /* Alamofire */; };
-		47E1FEB42C1C37170002571C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 47E1FEB32C1C37170002571C /* Kingfisher */; };
 		47E1FEB72C1C37320002571C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 47E1FEB62C1C37320002571C /* SnapKit */; };
 		47E1FEB92C1C37FF0002571C /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1FEB82C1C37FF0002571C /* HttpClient.swift */; };
 		47E1FEBB2C1C39470002571C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1FEBA2C1C39470002571C /* AppCoordinator.swift */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		475A25E12C1ED57D002E87CB /* LaunchesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesDelegate.swift; sourceTree = "<group>"; };
+		475A25E32C1ED58B002E87CB /* LaunchesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesDataSource.swift; sourceTree = "<group>"; };
 		47E1FE8D2C1B4C630002571C /* TheSpaceXApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheSpaceXApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47E1FE902C1B4C630002571C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47E1FE922C1B4C630002571C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,7 +46,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				47E1FEB72C1C37320002571C /* SnapKit in Frameworks */,
-				47E1FEB42C1C37170002571C /* Kingfisher in Frameworks */,
 				47E1FEB12C1C36E70002571C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		475A25E02C1ED559002E87CB /* Delegate&DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				475A25E12C1ED57D002E87CB /* LaunchesDelegate.swift */,
+				475A25E32C1ED58B002E87CB /* LaunchesDataSource.swift */,
+			);
+			path = "Delegate&DataSource";
+			sourceTree = "<group>";
+		};
 		47E1FE842C1B4C630002571C = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				47E1FEBD2C1C39A70002571C /* Builder */,
+				475A25E02C1ED559002E87CB /* Delegate&DataSource */,
 				47E1FEBE2C1C39B40002571C /* View */,
 				47E1FEBF2C1C39BB0002571C /* ViewModel */,
 			);
@@ -207,7 +219,6 @@
 			name = TheSpaceXApp;
 			packageProductDependencies = (
 				47E1FEB02C1C36E70002571C /* Alamofire */,
-				47E1FEB32C1C37170002571C /* Kingfisher */,
 				47E1FEB62C1C37320002571C /* SnapKit */,
 			);
 			productName = TheSpaceXApp;
@@ -240,7 +251,6 @@
 			mainGroup = 47E1FE842C1B4C630002571C;
 			packageReferences = (
 				47E1FEAF2C1C36E70002571C /* XCRemoteSwiftPackageReference "Alamofire" */,
-				47E1FEB22C1C37170002571C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				47E1FEB52C1C37310002571C /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 47E1FE8E2C1B4C630002571C /* Products */;
@@ -272,11 +282,13 @@
 				47E1FEC12C1C39E90002571C /* LaunchesBuilder.swift in Sources */,
 				47E1FEC52C1C3E6C0002571C /* LaunchesViewModel.swift in Sources */,
 				47E1FE912C1B4C630002571C /* AppDelegate.swift in Sources */,
+				475A25E22C1ED57D002E87CB /* LaunchesDelegate.swift in Sources */,
 				47E1FEC32C1C3A1F0002571C /* LaunchesViewController.swift in Sources */,
 				47E1FEAE2C1C33930002571C /* Launches.swift in Sources */,
 				47E1FEBB2C1C39470002571C /* AppCoordinator.swift in Sources */,
 				47E1FEB92C1C37FF0002571C /* HttpClient.swift in Sources */,
 				47E1FE932C1B4C630002571C /* SceneDelegate.swift in Sources */,
+				475A25E42C1ED58B002E87CB /* LaunchesDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,14 +506,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		47E1FEB22C1C37170002571C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
 		47E1FEB52C1C37310002571C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -517,11 +521,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 47E1FEAF2C1C36E70002571C /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		47E1FEB32C1C37170002571C /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 47E1FEB22C1C37170002571C /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 		47E1FEB62C1C37320002571C /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
