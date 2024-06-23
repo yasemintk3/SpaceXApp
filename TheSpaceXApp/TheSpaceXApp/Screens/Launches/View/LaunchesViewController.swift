@@ -6,10 +6,23 @@
 //
 
 import UIKit
+import SnapKit
 
 class LaunchesViewController: UIViewController {
     
     // MARK: Properties
+    
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(LaunchesCollectionViewCell.self,
+                                forCellWithReuseIdentifier: LaunchesCollectionViewCell.reuseIdentifier)
+        collectionView.showsVerticalScrollIndicator = false
+        return collectionView
+    }()
 
     private var viewModel: LaunchesViewModel?
     private var delegate: LaunchesDelegate?
@@ -33,6 +46,43 @@ class LaunchesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        configureUI()
+    }
+    
+    // MARK: Funcs
+    
+    private func configureUI() {
+        view.backgroundColor = .white
+        collectionView.backgroundColor = .yellow
+        
+        configureDelegate()
+        configureContraints()
+    }
+    
+    private func configureDelegate() {
+        collectionView.delegate = delegate
+        collectionView.dataSource = dataSource
+        
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let sizeCalculator = CellSize(flowLayout: flowLayout, width: UIScreen.main.bounds.size.width)
+            collectionView.contentInset = sizeCalculator.contentInset
+            collectionView.collectionViewLayout = sizeCalculator.getFlowLayout()
+        }
+    }
+    
+    private func configureContraints() {
+        
+        view.addSubview(collectionView)
+        
+        launchesCollectionView()
+    }
+    
+    private func launchesCollectionView() {
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.left.right.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
+        }
     }
 }
