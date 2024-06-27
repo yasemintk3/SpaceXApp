@@ -4,7 +4,7 @@
 //
 //  Created by Yasemin TOK on 14.06.2024.
 //
-
+ 
 import Foundation
 
 // MARK: - Launch
@@ -16,7 +16,7 @@ struct Launch: Codable {
     let launchYear: String?
     let launchDateUnix: Int?
     let launchDateUTC: String?
-    let launchDateLocal: Date?
+    let launchDateLocal: String?
     let isTentative: Bool?
     let tentativeMaxPrecision: TentativeMaxPrecision?
     let tbd: Bool?

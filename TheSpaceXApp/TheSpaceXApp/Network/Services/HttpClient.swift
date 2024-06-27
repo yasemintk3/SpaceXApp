@@ -30,9 +30,9 @@ class HttpClient: HttpClientProtocol {
     
     func fetch<T>(url: URL, completion: @escaping resultClosure<T>) where T : Decodable, T : Encodable {
         
-        alamofireSession.request(url, method: .get).responseDecodable(of: T.self) { search in
+        alamofireSession.request(url, method: .get).responseDecodable(of: T.self) { model in
             
-            guard let data = search.value else {
+            guard let data = model.value else {
                 return print("error")
             }
             completion(.success(data))
