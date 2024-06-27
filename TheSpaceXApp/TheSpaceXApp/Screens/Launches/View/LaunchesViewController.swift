@@ -94,14 +94,14 @@ class LaunchesViewController: UIViewController {
 // MARK: Extensions
 
 extension LaunchesViewController: LaunchesViewModelOutput {
-    func updateView(state: LaunchesListViewModelState) {
+    func updateView(_ state: LaunchesListViewModelState) {
         switch state {
         case .showLaunchList(let cellViewModel):
             delegate?.update(cellViewModel: cellViewModel)
             dataSource?.update(cellViewModel: cellViewModel)
             collectionView.reloadData()
         case .showError(let error):
-            print(error.localizedDescription)
+            showAlert(message: error)
         }
     }
 }

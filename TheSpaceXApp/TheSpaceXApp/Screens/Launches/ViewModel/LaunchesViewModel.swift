@@ -9,11 +9,11 @@ import Foundation
 
 enum LaunchesListViewModelState {
     case showLaunchList(LaunchesCellViewModel)
-    case showError(Error)
+    case showError(String)
 }
 
 protocol LaunchesViewModelOutput: AnyObject {
-    func updateView(state: LaunchesListViewModelState)
+    func updateView(_ state: LaunchesListViewModelState)
 }
 
 protocol LaunchesViewModelProtocol {
@@ -47,9 +47,9 @@ final class LaunchesViewModel: LaunchesViewModelProtocol {
             case .success(let response):
                 let results = response
                 let cellViewModel = LaunchesCellViewModel(result: results)
-                self.output?.updateView(state: .showLaunchList(cellViewModel))
+                self.output?.updateView(.showLaunchList(cellViewModel))
             case .failure(let error):
-                return print(error.localizedDescription)
+                self.output?.updateView(.showError(error.localizedDescription))
             }
         })
     }
