@@ -13,6 +13,11 @@ final class LaunchesDelegate: NSObject {
     
     private var viewModel: LaunchesCellViewModel?
     
+    // MARK: Funcs
+    
+    func update(cellViewModel: LaunchesCellViewModel) {
+        self.viewModel = cellViewModel
+    }
 }
 
 // MARK: Extensions

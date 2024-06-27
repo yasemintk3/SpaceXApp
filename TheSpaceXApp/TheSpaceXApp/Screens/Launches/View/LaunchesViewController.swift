@@ -47,6 +47,11 @@ class LaunchesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "SpaceX Launches"
+        
+        viewModel?.output = self
+        viewModel?.getLaunchesList()
+        
         configureUI()
     }
     
@@ -54,7 +59,6 @@ class LaunchesViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .white
-        collectionView.backgroundColor = .yellow
         
         configureDelegate()
         configureContraints()
@@ -83,6 +87,21 @@ class LaunchesViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.left.right.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalToSuperview()
+        }
+    }
+}
+
+// MARK: Extensions
+
+extension LaunchesViewController: LaunchesViewModelOutput {
+    func updateView(state: LaunchesListViewModelState) {
+        switch state {
+        case .showLaunchList(let cellViewModel):
+            delegate?.update(cellViewModel: cellViewModel)
+            dataSource?.update(cellViewModel: cellViewModel)
+            collectionView.reloadData()
+        case .showError(let error):
+            print(error.localizedDescription)
         }
     }
 }

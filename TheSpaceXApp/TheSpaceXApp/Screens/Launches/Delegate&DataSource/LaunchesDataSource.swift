@@ -13,6 +13,11 @@ final class LaunchesDataSource: NSObject {
     
     private var viewModel: LaunchesCellViewModel?
     
+    // MARK: Funcs
+    
+    func update(cellViewModel: LaunchesCellViewModel) {
+        self.viewModel = cellViewModel
+    }
 }
 
 // MARK: Extensions
@@ -20,13 +25,17 @@ final class LaunchesDataSource: NSObject {
 extension LaunchesDataSource: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel?.listCount ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LaunchesCollectionViewCell.reuseIdentifier, for: indexPath) as? LaunchesCollectionViewCell
-        else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LaunchesCollectionViewCell.reuseIdentifier, for: indexPath) as? LaunchesCollectionViewCell,
+        let viewModel = viewModel else { return UICollectionViewCell() }
+        
+        cell.configure(flightNumber: viewModel.getFlightNumber(by: indexPath),
+                       missionName: viewModel.getMissionName(by: indexPath),
+                       upcomingSituation: viewModel.getUpcomingSituation(by: indexPath))
         
         return cell
     }

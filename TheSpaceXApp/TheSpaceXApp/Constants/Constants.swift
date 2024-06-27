@@ -11,7 +11,6 @@ struct Constants {
     
     static let BASE_URL = "https://api.spacexdata.com/v3"
     static let QUERY_URL = "/launches"
-    
 }
 
 extension Constants {
