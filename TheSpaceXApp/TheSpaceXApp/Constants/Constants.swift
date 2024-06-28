@@ -11,6 +11,8 @@ struct Constants {
     
     static let BASE_URL = "https://api.spacexdata.com/v3"
     static let QUERY_URL = "/launches"
+    
+    static let emptyImageURL: URL = URL(string: "https://www.swift-inc.com/public/images/images-empty.png")!
 }
 
 extension Constants {

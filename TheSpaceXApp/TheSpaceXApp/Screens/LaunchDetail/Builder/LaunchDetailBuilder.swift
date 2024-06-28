@@ -17,7 +17,12 @@ enum LaunchDetailBuilder {
         
         let detailViewModel = LaunchDetailViewModel(id: id, httpClient: httpClient)
         
-        let viewController = LaunchDetailViewController(viewModel: detailViewModel)
+        let delegate = LaunchDetailDelegate()
+        let dataSource = LaunchDetailDataSource()
+        
+        let viewController = LaunchDetailViewController(viewModel: detailViewModel,
+                                                        delegate: delegate,
+                                                        dataSource: dataSource)
         
         return viewController
     }

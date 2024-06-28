@@ -7,14 +7,26 @@
 
 import Foundation
 
-protocol LaunchDetailViewModelProtocol {
+enum LaunchDetailListViewModelState {
+    case showLaunchDetail(LaunchDetailCellViewModel)
+    case showError(String)
+}
 
+protocol LaunchDetailViewModelOutput: AnyObject {
+    func updateView(_ state: LaunchDetailListViewModelState)
+}
+
+protocol LaunchDetailViewModelProtocol {
+    var output: LaunchDetailViewModelOutput? { get set }
+    
+    func getLaunchDetail()
 }
 
 final class LaunchDetailViewModel: LaunchDetailViewModelProtocol {
     
     // MARK: Properties
     
+    var output: LaunchDetailViewModelOutput?
     private var id: Int
     private var httpClient: HttpClientProtocol
     
@@ -29,15 +41,17 @@ final class LaunchDetailViewModel: LaunchDetailViewModelProtocol {
     
     // MARK: Funcs
     
-    private func getLaunchDetail() {
+    func getLaunchDetail() {
         
         httpClient.fetch(url: Constants.generateDetailURL(id: id)!, completion: { [self] (result: Result<LaunchDetail, Error>) in
             
             switch result {
             case .success(let response):
-                print(response)
+                let results = response
+                let detailCellViewModel = LaunchDetailCellViewModel(imagesResult: results)
+                self.output?.updateView(.showLaunchDetail(detailCellViewModel))
             case .failure(let error):
-                return print(error.localizedDescription)
+                self.output?.updateView(.showError(error.localizedDescription))
             }
         })
     }
