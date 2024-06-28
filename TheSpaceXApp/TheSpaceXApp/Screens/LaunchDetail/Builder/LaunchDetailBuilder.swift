@@ -15,9 +15,9 @@ enum LaunchDetailBuilder {
         
         let httpClient = HttpClient(alamofireSession: Alamofire.Session.default)
         
-        let viewModel = LaunchDetailViewModel()
+        let detailViewModel = LaunchDetailViewModel(id: id, httpClient: httpClient)
         
-        let viewController = LaunchDetailViewController()
+        let viewController = LaunchDetailViewController(viewModel: detailViewModel)
         
         return viewController
     }
