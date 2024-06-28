@@ -24,6 +24,44 @@ class LaunchDetailViewController: UIViewController {
         return collectionView
     }()
     
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    private lazy var flightNumber: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    private lazy var missionName: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    private lazy var launchYear: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    private lazy var launchDetails: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.textColor = .black
+        label.numberOfLines = 0
+        return label
+    }()
+    
     private var viewModel: LaunchDetailViewModelProtocol?
     private var delegate: LaunchDetailDelegate?
     private var dataSource: LaunchDetailDataSource?
@@ -75,28 +113,67 @@ class LaunchDetailViewController: UIViewController {
     private func configureContraints() {
         
         view.addSubview(collectionView)
+        view.addSubview(stackView)
+        stackView.addArrangedSubview(flightNumber)
+        stackView.addArrangedSubview(missionName)
+        stackView.addArrangedSubview(launchYear)
+        view.addSubview(launchDetails)
         
         launchImagesCollectionView()
+        stackViewConstraints()
+        launchDetailsConstraints()
     }
     
     private func launchImagesCollectionView() {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.left.right.equalToSuperview()
-            make.height.equalTo(view.frame.size.height / 3.4)
+            make.height.equalTo(view.frame.size.height / 2.75)
         }
+    }
+    
+    private func stackViewConstraints() {
+        
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom)
+            make.leading.equalToSuperview().offset(8)
+            make.trailing.equalToSuperview().offset(-8)
+            make.height.equalTo(view.frame.size.height / 7.5)
+        }
+    }
+    
+    private func launchDetailsConstraints() {
+        
+        launchDetails.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(8)
+            make.trailing.equalToSuperview().offset(-8)
+        }
+    }
+    
+    private func setData() {
+        
+        guard let viewModel = viewModel else { return }
+        
+        flightNumber.text = viewModel.getFlightNumber()
+        missionName.text = viewModel.getMissionName()
+        launchYear.text = viewModel.getLaunchYear()
+        launchDetails.text = viewModel.getLaunchDetails()
     }
 }
 
 // MARK: Extensions
 
 extension LaunchDetailViewController: LaunchDetailViewModelOutput {
-    func updateView(_ state: LaunchDetailListViewModelState) {
+    
+    func updateDetailView(_ state: LaunchDetailListViewModelState) {
         switch state {
         case .showLaunchDetail(let detailCellViewModel):
             delegate?.update(detailCellViewModel: detailCellViewModel)
             dataSource?.update(detailCellViewModel: detailCellViewModel)
             collectionView.reloadData()
+        case .setData:
+            self.setData()
         case .showError(let error):
             showAlert(message: error)
         }

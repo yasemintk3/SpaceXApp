@@ -9,17 +9,22 @@ import Foundation
 
 enum LaunchDetailListViewModelState {
     case showLaunchDetail(LaunchDetailCellViewModel)
+    case setData
     case showError(String)
 }
 
 protocol LaunchDetailViewModelOutput: AnyObject {
-    func updateView(_ state: LaunchDetailListViewModelState)
+    func updateDetailView(_ state: LaunchDetailListViewModelState)
 }
 
 protocol LaunchDetailViewModelProtocol {
     var output: LaunchDetailViewModelOutput? { get set }
     
     func getLaunchDetail()
+    func getFlightNumber() -> String
+    func getMissionName() -> String
+    func getLaunchYear() -> String
+    func getLaunchDetails() -> String
 }
 
 final class LaunchDetailViewModel: LaunchDetailViewModelProtocol {
@@ -29,6 +34,7 @@ final class LaunchDetailViewModel: LaunchDetailViewModelProtocol {
     var output: LaunchDetailViewModelOutput?
     private var id: Int
     private var httpClient: HttpClientProtocol
+    private var results: LaunchDetail?
     
     // MARK: Init
     
@@ -47,12 +53,33 @@ final class LaunchDetailViewModel: LaunchDetailViewModelProtocol {
             
             switch result {
             case .success(let response):
-                let results = response
-                let detailCellViewModel = LaunchDetailCellViewModel(imagesResult: results)
-                self.output?.updateView(.showLaunchDetail(detailCellViewModel))
+                self.results = response
+                let detailCellViewModel = LaunchDetailCellViewModel(imagesResult: response)
+                self.output?.updateDetailView(.showLaunchDetail(detailCellViewModel))
+                self.output?.updateDetailView(.setData)
             case .failure(let error):
-                self.output?.updateView(.showError(error.localizedDescription))
+                self.output?.updateDetailView(.showError(error.localizedDescription))
             }
         })
+    }
+    
+    func getFlightNumber() -> String {
+        let number = results?.flightNumber
+        return "Flight Number: \(number ?? 0)"
+    }
+    
+    func getMissionName() -> String {
+        let name = results?.missionName
+        return "Mission Name: \(name ?? "")"
+    }
+    
+    func getLaunchYear() -> String {
+        let year = results?.launchYear
+        return "Launch Year: \(year ?? "")"
+    }
+    
+    func getLaunchDetails() -> String {
+        let details = results?.details
+        return "Launch Details: \(details ?? "")"
     }
 }

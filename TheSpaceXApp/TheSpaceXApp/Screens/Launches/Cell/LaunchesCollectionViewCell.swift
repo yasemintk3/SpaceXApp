@@ -61,7 +61,7 @@ class LaunchesCollectionViewCell: UICollectionViewCell {
     
     // MARK: Funcs
     
-    func configure(flightNumber: Int, missionName: String, upcomingSituation: Bool) {
+    func configure(flightNumber: String, missionName: String, upcomingSituation: String) {
         configureCell()
         configureFlightNumber(number: flightNumber)
         configureMissionName(name: missionName)
@@ -91,7 +91,7 @@ class LaunchesCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    private func configureFlightNumber(number: Int) {
+    private func configureFlightNumber(number: String) {
         flightNumber.text = "\(number)"
     }
     
@@ -99,7 +99,7 @@ class LaunchesCollectionViewCell: UICollectionViewCell {
         missionName.text = name
     }
     
-    private func configureUpcomingSituation(situation: Bool) {
+    private func configureUpcomingSituation(situation: String) {
         upcomingSituation.text = "Upcoming: \(String(situation))"
     }
 }

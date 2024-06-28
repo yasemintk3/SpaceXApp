@@ -23,17 +23,21 @@ class LaunchesCellViewModel {
     var listCount: Int {
         result.count
     }
+
+    // MARK: Funcs
     
-    func getFlightNumber(by indexPath: IndexPath) -> Int {
-        result[indexPath.row].flightNumber ?? 0
+    func getFlightNumber(by indexPath: IndexPath) -> String {
+        let number = result[indexPath.row].flightNumber
+        return "\(number ?? 0)"
     }
     
     func getMissionName(by indexPath: IndexPath) -> String {
         result[indexPath.row].missionName ?? ""
     }
     
-    func getUpcomingSituation(by indexPath: IndexPath) -> Bool {
-        result[indexPath.row].upcoming ?? true
+    func getUpcomingSituation(by indexPath: IndexPath) -> String {
+        let situation = result[indexPath.row].upcoming
+        return "\(situation ?? false)"
     }
     
     func getID(indexPath: IndexPath) -> Int {
