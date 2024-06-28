@@ -7,16 +7,22 @@
 
 import UIKit
 
+protocol LaunchesDelegateOutput: AnyObject {
+    func didSelectItem(id: Int)
+}
+
 final class LaunchesDelegate: NSObject {
     
     // MARK: Properties
     
     private var viewModel: LaunchesCellViewModel?
+    private weak var output: LaunchesDelegateOutput?
     
     // MARK: Funcs
     
-    func update(cellViewModel: LaunchesCellViewModel) {
+    func update(cellViewModel: LaunchesCellViewModel, output: LaunchesDelegateOutput) {
         self.viewModel = cellViewModel
+        self.output = output
     }
 }
 
@@ -32,5 +38,10 @@ extension LaunchesDelegate: UICollectionViewDelegate, UICollectionViewDelegateFl
             return size.estimatedItemSize
         }
         return .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewModel = viewModel else {return}
+        output?.didSelectItem(id: viewModel.getID(indexPath: indexPath))
     }
 }

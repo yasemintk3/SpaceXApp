@@ -19,6 +19,7 @@
 		475A25F92C2EAED8002E87CB /* LaunchDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A25F82C2EAED8002E87CB /* LaunchDetailBuilder.swift */; };
 		475A25FB2C2EAEEF002E87CB /* LaunchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A25FA2C2EAEEF002E87CB /* LaunchDetailViewController.swift */; };
 		475A25FD2C2EAF11002E87CB /* LaunchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A25FC2C2EAF11002E87CB /* LaunchDetailViewModel.swift */; };
+		475A25FF2C2EB47A002E87CB /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A25FE2C2EB47A002E87CB /* LaunchDetail.swift */; };
 		47E1FE912C1B4C630002571C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1FE902C1B4C630002571C /* AppDelegate.swift */; };
 		47E1FE932C1B4C630002571C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1FE922C1B4C630002571C /* SceneDelegate.swift */; };
 		47E1FE9A2C1B4C680002571C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47E1FE992C1B4C680002571C /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		475A25F82C2EAED8002E87CB /* LaunchDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailBuilder.swift; sourceTree = "<group>"; };
 		475A25FA2C2EAEEF002E87CB /* LaunchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailViewController.swift; sourceTree = "<group>"; };
 		475A25FC2C2EAF11002E87CB /* LaunchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailViewModel.swift; sourceTree = "<group>"; };
+		475A25FE2C2EB47A002E87CB /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
 		47E1FE8D2C1B4C630002571C /* TheSpaceXApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheSpaceXApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47E1FE902C1B4C630002571C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47E1FE922C1B4C630002571C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				47E1FEAD2C1C33930002571C /* Launches.swift */,
+				475A25FE2C2EB47A002E87CB /* LaunchDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				47E1FEAE2C1C33930002571C /* Launches.swift in Sources */,
 				475A25EB2C1ED8A4002E87CB /* CellSize.swift in Sources */,
 				47E1FEBB2C1C39470002571C /* AppCoordinator.swift in Sources */,
+				475A25FF2C2EB47A002E87CB /* LaunchDetail.swift in Sources */,
 				475A25FB2C2EAEEF002E87CB /* LaunchDetailViewController.swift in Sources */,
 				475A25EF2C1EDD0C002E87CB /* LaunchesCellViewModel.swift in Sources */,
 				475A25FD2C2EAF11002E87CB /* LaunchDetailViewModel.swift in Sources */,

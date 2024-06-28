@@ -97,11 +97,17 @@ extension LaunchesViewController: LaunchesViewModelOutput {
     func updateView(_ state: LaunchesListViewModelState) {
         switch state {
         case .showLaunchList(let cellViewModel):
-            delegate?.update(cellViewModel: cellViewModel)
+            delegate?.update(cellViewModel: cellViewModel, output: self)
             dataSource?.update(cellViewModel: cellViewModel)
             collectionView.reloadData()
         case .showError(let error):
             showAlert(message: error)
         }
+    }
+}
+
+extension LaunchesViewController: LaunchesDelegateOutput {
+    func didSelectItem(id: Int) {
+        viewModel?.goToDetail(id: id)
     }
 }

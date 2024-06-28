@@ -18,4 +18,8 @@ extension Constants {
     static func generateLaunchesURL() -> URL? {
         URL(string: BASE_URL + QUERY_URL)
     }
+    
+    static func generateDetailURL(id: Int) -> URL? {
+        URL(string: BASE_URL + QUERY_URL + "/" + String(id))
+    }
 }

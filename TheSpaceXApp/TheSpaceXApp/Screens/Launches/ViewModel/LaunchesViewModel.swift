@@ -20,6 +20,7 @@ protocol LaunchesViewModelProtocol {
     var output: LaunchesViewModelOutput? { get set }
     
     func getLaunchesList()
+    func goToDetail(id: Int)
 }
 
 final class LaunchesViewModel: LaunchesViewModelProtocol {
@@ -52,5 +53,9 @@ final class LaunchesViewModel: LaunchesViewModelProtocol {
                 self.output?.updateView(.showError(error.localizedDescription))
             }
         })
+    }
+    
+    func goToDetail(id: Int) {
+        appCoordinator?.launchSelected(id: id)
     }
 }

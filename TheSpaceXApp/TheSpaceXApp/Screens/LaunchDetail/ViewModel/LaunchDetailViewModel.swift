@@ -23,5 +23,22 @@ final class LaunchDetailViewModel: LaunchDetailViewModelProtocol {
     init(id: Int, httpClient: HttpClientProtocol) {
         self.id = id
         self.httpClient = httpClient
+        
+        self.getLaunchDetail()
+    }
+    
+    // MARK: Funcs
+    
+    private func getLaunchDetail() {
+        
+        httpClient.fetch(url: Constants.generateDetailURL(id: id)!, completion: { [self] (result: Result<LaunchDetail, Error>) in
+            
+            switch result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                return print(error.localizedDescription)
+            }
+        })
     }
 }

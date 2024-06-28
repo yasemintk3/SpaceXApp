@@ -35,4 +35,9 @@ class LaunchesCellViewModel {
     func getUpcomingSituation(by indexPath: IndexPath) -> Bool {
         result[indexPath.row].upcoming ?? true
     }
+    
+    func getID(indexPath: IndexPath) -> Int {
+        guard let id = result[indexPath.row].flightNumber else { return 0 }
+        return id
+    }
 }

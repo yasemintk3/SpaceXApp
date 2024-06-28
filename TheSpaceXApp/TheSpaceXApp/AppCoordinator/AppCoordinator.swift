@@ -11,6 +11,7 @@ import UIKit
 protocol Coordinator: AnyObject {
     var navigationController: UINavigationController? { get set }
     func start()
+    func launchSelected(id: Int)
 }
 
 class AppCoordinator: Coordinator {
@@ -30,5 +31,9 @@ class AppCoordinator: Coordinator {
     func start() {
         let vc = LaunchesBuilder.build(appCoordinator: self)
         navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    func launchSelected(id: Int) {
+        navigationController?.pushViewController(LaunchDetailBuilder.build(id: id), animated: true)
     }
 }
