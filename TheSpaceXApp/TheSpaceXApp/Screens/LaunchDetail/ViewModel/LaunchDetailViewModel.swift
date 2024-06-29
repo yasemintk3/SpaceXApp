@@ -29,6 +29,13 @@ protocol LaunchDetailViewModelProtocol {
 
 final class LaunchDetailViewModel: LaunchDetailViewModelProtocol {
     
+    private enum Constant {
+        static let number = "Flight Number: "
+        static let name = "Mission Name: "
+        static let year = "Launch Year: "
+        static let details = "Launch Details: "
+    }
+    
     // MARK: Properties
     
     var output: LaunchDetailViewModelOutput?
@@ -65,21 +72,21 @@ final class LaunchDetailViewModel: LaunchDetailViewModelProtocol {
     
     func getFlightNumber() -> String {
         let number = results?.flightNumber
-        return "Flight Number: \(number ?? 0)"
+        return Constant.number + "\(number ?? 0)"
     }
     
     func getMissionName() -> String {
         let name = results?.missionName
-        return "Mission Name: \(name ?? "")"
+        return Constant.name + "\(name ?? "")"
     }
     
     func getLaunchYear() -> String {
         let year = results?.launchYear
-        return "Launch Year: \(year ?? "")"
+        return Constant.year + "\(year ?? "")"
     }
     
     func getLaunchDetails() -> String {
         let details = results?.details
-        return "Launch Details: \(details ?? "")"
+        return Constant.details + "\(details ?? "")"
     }
 }

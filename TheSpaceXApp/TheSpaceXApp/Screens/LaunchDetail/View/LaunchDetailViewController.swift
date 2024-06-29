@@ -35,28 +35,28 @@ class LaunchDetailViewController: UIViewController {
     
     private lazy var flightNumber: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 13)
         label.textColor = .black
         return label
     }()
     
     private lazy var missionName: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 13)
         label.textColor = .black
         return label
     }()
     
     private lazy var launchYear: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 13)
         label.textColor = .black
         return label
     }()
     
     private lazy var launchDetails: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 13)
         label.textColor = .black
         label.numberOfLines = 0
         return label
@@ -95,6 +95,8 @@ class LaunchDetailViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .white
         
+        navigationController?.navigationBar.tintColor = .black
+        
         configureDelegate()
         configureContraints()
     }
@@ -128,7 +130,7 @@ class LaunchDetailViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.left.right.equalToSuperview()
-            make.height.equalTo(view.frame.size.height / 2.75)
+            make.height.equalTo(view.frame.size.height / 2.3)
         }
     }
     
@@ -138,7 +140,7 @@ class LaunchDetailViewController: UIViewController {
             make.top.equalTo(collectionView.snp.bottom)
             make.leading.equalToSuperview().offset(8)
             make.trailing.equalToSuperview().offset(-8)
-            make.height.equalTo(view.frame.size.height / 7.5)
+            make.height.equalTo(view.frame.size.height / 8)
         }
     }
     

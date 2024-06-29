@@ -10,6 +10,10 @@ import SnapKit
 
 class LaunchesViewController: UIViewController {
     
+    private enum Constant {
+        static let title = "SpaceX Launches"
+    }
+    
     // MARK: Properties
     
     private lazy var collectionView: UICollectionView = {
@@ -47,8 +51,6 @@ class LaunchesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "SpaceX Launches"
-        
         viewModel?.output = self
         viewModel?.getLaunchesList()
         
@@ -59,6 +61,8 @@ class LaunchesViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .white
+        
+        self.title = Constant.title
         
         configureDelegate()
         configureContraints()

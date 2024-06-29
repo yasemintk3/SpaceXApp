@@ -12,7 +12,7 @@ struct CellSize {
     private enum Constant {
         static let contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         static let collectionViewEstimatedCellHeight: CGFloat = 100
-        static let detailCollectionViewEstimatedCellHeight: CGFloat = 150
+        static let detailCollectionViewEstimatedCellHeight: CGFloat = 120
         static let minimumLineSpacing: CGFloat = 8.0
         static let minimumInteritemSpacing: CGFloat = 0.0
         static let zero: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 0)

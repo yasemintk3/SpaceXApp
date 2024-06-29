@@ -13,6 +13,7 @@ class LaunchesCollectionViewCell: UICollectionViewCell {
         static let viewCornerRadius: CGFloat = 8
         static let viewCornerLineWidth: CGFloat = 1
         static let minOffSet: CGFloat = 8
+        static let upcoming = "Upcoming: "
     }
     
     // MARK: Properties
@@ -100,6 +101,6 @@ class LaunchesCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureUpcomingSituation(situation: String) {
-        upcomingSituation.text = "Upcoming: \(String(situation))"
+        upcomingSituation.text = Constant.upcoming + "\(String(situation))"
     }
 }

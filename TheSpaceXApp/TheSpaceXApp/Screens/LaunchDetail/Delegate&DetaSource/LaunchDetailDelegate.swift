@@ -28,7 +28,7 @@ extension LaunchDetailDelegate: UICollectionViewDelegate, UICollectionViewDelega
         
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
             let size = CellSize(flowLayout: flowLayout,
-                                      width: UIScreen.main.bounds.size.width)
+                                width: UIScreen.main.bounds.size.width)
             return size.detailEstimatedItemSize
         }
         return .zero
